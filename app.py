@@ -37,25 +37,30 @@ def handle_message(event):
     if get_message=="你好":
         # reply = TextSendMessage(text=f"你好臭雞雞")
         # line_bot_api.reply_message(event.reply_token,reply)
-        message = TemplateSendMessage(
-            alt_text='Confirm template',
-            template=ConfirmTemplate(
-                text='Are you sure?',
+        buttons_template_message = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://example.com/image.jpg',
+                title='Menu',
+                text='Please select',
                 actions=[
-                    PostbackTemplateAction(
+                    PostbackAction(
                         label='postback',
-                        text='postback text',
+                        display_text='postback text',
                         data='action=buy&itemid=1'
                     ),
-                    MessageTemplateAction(
+                    MessageAction(
                         label='message',
                         text='message text'
+                    ),
+                    URIAction(
+                        label='uri',
+                        uri='http://example.com/'
                     )
                 ]
             )
         )
-        line_bot_api.reply_message(event.reply_token, message)
-
+        line_bot_api.reply_message(event.reply_token,buttons_template_message)
     elif get_message=="滾":
         reply = TextSendMessage(text=f"你在哭阿")
         line_bot_api.reply_message(event.reply_token,reply)
