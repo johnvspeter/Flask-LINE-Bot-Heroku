@@ -33,14 +33,14 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    get_message = "event.message.text"
-    if get_message=='你好':
+    get_message = event.message.text
+    if get_message=="你好":
         reply = TextSendMessage(text=f"你好臭雞雞")
         line_bot_api.reply_message(event.reply_token,reply)
-    elif get_message=='滾':
+    elif get_message=="滾":
         reply = TextSendMessage(text=f"你在哭阿")
         line_bot_api.reply_message(event.reply_token,reply)
-    elif get_message=='走開':
+    elif get_message=="走開":
         reply = TextSendMessage(text=f"ㄟ我沒有欠你ㄟ")
         line_bot_api.reply_message(event.reply_token,reply)
     else:
