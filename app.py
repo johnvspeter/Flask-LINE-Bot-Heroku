@@ -35,13 +35,32 @@ def callback():
 def handle_message(event):
     get_message = event.message.text
     if get_message=="你好":
-        reply = TextSendMessage(text=f"你好臭雞雞")
-        line_bot_api.reply_message(event.reply_token,reply)
+        # reply = TextSendMessage(text=f"你好臭雞雞")
+        # line_bot_api.reply_message(event.reply_token,reply)
+        message = TemplateSendMessage(
+            alt_text='Confirm template',
+            template=ConfirmTemplate(
+                text='Are you sure?',
+                actions=[
+                    PostbackTemplateAction(
+                        label='postback',
+                        text='postback text',
+                        data='action=buy&itemid=1'
+                    ),
+                    MessageTemplateAction(
+                        label='message',
+                        text='message text'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, message)
+
     elif get_message=="滾":
         reply = TextSendMessage(text=f"你在哭阿")
         line_bot_api.reply_message(event.reply_token,reply)
     elif get_message=="走開":
-        reply = TextSendMessage(text=f"ㄟ我沒有欠你ㄟ")
+        reply = TextSendMessage(text=f"ㄟ我沒有欠你诶")
         line_bot_api.reply_message(event.reply_token,reply)
     else:
         reply = TextSendMessage(text=f"哩西哩工啥")
