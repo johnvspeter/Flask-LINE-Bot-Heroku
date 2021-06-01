@@ -25,6 +25,7 @@ def callback():
 
         try:
             handler.handle(body, signature)
+            line_bot_api.push_message("U727f88967428705de1e7fe322771409d", TextSendMessage(text='台科大電腦研習社'))
         except InvalidSignatureError:
             abort(400)
 
