@@ -42,7 +42,7 @@ def handle_message(event):
         reply = TextSendMessage(text=f"你在哭阿")
         line_bot_api.reply_message(event.reply_token,reply)
     elif get_message=="走開":
-        reply = TextSendMessage(text=f"蛤")
+        reply = TextSendMessage("蛤"+event.source.user_id)
         line_bot_api.reply_message(event.reply_token,reply)
     else:
         buttons_template_message = TemplateSendMessage(
