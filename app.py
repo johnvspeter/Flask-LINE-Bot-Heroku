@@ -18,6 +18,10 @@ handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
 def callback():
 
     if request.method == "GET":
+        try:
+            line_bot_api.push_message("U727f88967428705de1e7fe322771409d", TextSendMessage(text='台科大電腦研習社'))
+        except InvalidSignatureError:
+            abort(400)
         return "修改Buttons template"
     if request.method == "POST":
         signature = request.headers["X-Line-Signature"]
@@ -25,7 +29,6 @@ def callback():
 
         try:
             handler.handle(body, signature)
-            line_bot_api.push_message("U727f88967428705de1e7fe322771409d", TextSendMessage(text='台科大電腦研習社'))
         except InvalidSignatureError:
             abort(400)
 
