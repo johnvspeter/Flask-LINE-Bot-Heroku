@@ -18,7 +18,7 @@ handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
 def callback():
 
     if request.method == "GET":
-        return "Hello Heroku2"
+        return "打卡修改"
     if request.method == "POST":
         signature = request.headers["X-Line-Signature"]
         body = request.get_data(as_text=True)
@@ -55,7 +55,7 @@ def handle_message(event):
                     ),
                     URIAction(
                         label='打卡阿',
-                        uri='http://op.honorseiki.com:8787/External/COVID19/SignIn.aspx'
+                        uri='http://op.honorseiki.com:8787/External/COVID19/SignIn.aspx/'
                     )
                 ]
             )
