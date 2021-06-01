@@ -21,7 +21,7 @@ def callback():
     if request.method == "GET":
         try:
             buttons_template_message = TemplateSendMessage(
-                alt_text='Buttons template',
+                alt_text='快點打卡阿',
                 template=ButtonsTemplate(
                     thumbnail_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_IOaY-aGjlpLBUtM1xGqn74X-UIpiHH1ig&usqp=CAU',
                     title='還不快打卡',
@@ -75,7 +75,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,reply)
     else:
         buttons_template_message = TemplateSendMessage(
-            alt_text='Buttons template',
+            alt_text='快點打卡阿',
             template=ButtonsTemplate(
                 thumbnail_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_IOaY-aGjlpLBUtM1xGqn74X-UIpiHH1ig&usqp=CAU',
                 title='還不快打卡',
