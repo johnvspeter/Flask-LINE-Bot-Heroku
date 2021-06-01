@@ -18,7 +18,7 @@ handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
 def callback():
 
     if request.method == "GET":
-        return "打卡修改"
+        return "打卡修改2"
     if request.method == "POST":
         signature = request.headers["X-Line-Signature"]
         body = request.get_data(as_text=True)
@@ -40,7 +40,7 @@ def handle_message(event):
         buttons_template_message = TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
-                thumbnail_image_url='http://img.yao51.com/jiankangtuku/sttucwrurx.jpeg',
+                thumbnail_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtPhbxvU9AbdrBPa9oY-Ui9X93fNt4auKM8oGhDPeUtADYYdHb2FLCQVWSnZ9g9s4kSFY&usqp=CAU',
                 title='Menu',
                 text='Please select',
                 actions=[
@@ -54,7 +54,7 @@ def handle_message(event):
                         text='message text'
                     ),
                     URIAction(
-                        label='打卡阿',
+                        label='打卡囉',
                         uri='http://op.honorseiki.com:8787/External/COVID19/SignIn.aspx/'
                     )
                 ]
@@ -65,7 +65,7 @@ def handle_message(event):
         reply = TextSendMessage(text=f"你在哭阿")
         line_bot_api.reply_message(event.reply_token,reply)
     elif get_message=="走開":
-        reply = TextSendMessage(text=f"ㄟ我沒有欠你诶")
+        reply = TextSendMessage(text=f"http://op.honorseiki.com:8787/External/COVID19/SignIn.aspx/")
         line_bot_api.reply_message(event.reply_token,reply)
     else:
         reply = TextSendMessage(text=f"哩西哩工啥")
