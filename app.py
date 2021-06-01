@@ -13,11 +13,7 @@ app = Flask(__name__)
 line_bot_api = LineBotApi(os.environ.get("CHANNEL_ACCESS_TOKEN"))
 handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
 
-if (datetime/2)==0:
-    try:
-                line_bot_api.push_message("U727f88967428705de1e7fe322771409d", TextSendMessage(text='test'))
-    except InvalidSignatureError:
-                abort(400)
+
 
 @app.route("/", methods=["GET", "POST"])
 def callback():
