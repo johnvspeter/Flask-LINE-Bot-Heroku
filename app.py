@@ -40,7 +40,7 @@ def handle_message(event):
         buttons_template_message = TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
-                thumbnail_image_url='https://example.com/image.jpg',
+                thumbnail_image_url='http://img.yao51.com/jiankangtuku/sttucwrurx.jpeg',
                 title='Menu',
                 text='Please select',
                 actions=[
@@ -54,8 +54,8 @@ def handle_message(event):
                         text='message text'
                     ),
                     URIAction(
-                        label='uri',
-                        uri='http://example.com/'
+                        label='打卡阿',
+                        uri='http://op.honorseiki.com:8787/External/COVID19/SignIn.aspx'
                     )
                 ]
             )
