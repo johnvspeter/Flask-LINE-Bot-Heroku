@@ -3,7 +3,7 @@ import urllib.request
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('cron', day_of_week='mon-fri', hour='0',minute='16')
+@sched.scheduled_job('cron', day_of_week='mon-fri', hour='8',minute='18')
 def scheduled_job():
     url = " https://chichunbot.herokuapp.com/"
     conn = urllib.request.urlopen(url)
