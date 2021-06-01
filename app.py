@@ -18,7 +18,7 @@ handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
 def callback():
 
     if request.method == "GET":
-        return "打卡URL修改 直接開啟外部瀏覽器"
+        return "打卡圖片修改"
     if request.method == "POST":
         signature = request.headers["X-Line-Signature"]
         body = request.get_data(as_text=True)
@@ -48,7 +48,7 @@ def handle_message(event):
         buttons_template_message = TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
-                thumbnail_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtPhbxvU9AbdrBPa9oY-Ui9X93fNt4auKM8oGhDPeUtADYYdHb2FLCQVWSnZ9g9s4kSFY&usqp=CAU',
+                thumbnail_image_url='https://img.zcool.cn/community/01cf825b99c66fa8012099c8f44c32.png@1280w_1l_2o_100sh.png',
                 title='Menu',
                 text='Please select',
                 actions=[
