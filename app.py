@@ -18,7 +18,7 @@ handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
 def callback():
 
     if request.method == "GET":
-        return "打卡修改2"
+        return "打卡URL修改 直接開啟外部瀏覽器"
     if request.method == "POST":
         signature = request.headers["X-Line-Signature"]
         body = request.get_data(as_text=True)
@@ -35,8 +35,16 @@ def callback():
 def handle_message(event):
     get_message = event.message.text
     if get_message=="你好":
-        # reply = TextSendMessage(text=f"你好臭雞雞")
-        # line_bot_api.reply_message(event.reply_token,reply)
+        reply = TextSendMessage(text=f"你好臭雞雞")
+        line_bot_api.reply_message(event.reply_token,reply)
+        
+    elif get_message=="滾":
+        reply = TextSendMessage(text=f"你在哭阿")
+        line_bot_api.reply_message(event.reply_token,reply)
+    elif get_message=="走開":
+        reply = TextSendMessage(text=f"蛤")
+        line_bot_api.reply_message(event.reply_token,reply)
+    else:
         buttons_template_message = TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
@@ -44,32 +52,24 @@ def handle_message(event):
                 title='Menu',
                 text='Please select',
                 actions=[
-                    PostbackAction(
-                        label='postback',
-                        display_text='postback text',
-                        data='action=buy&itemid=1'
-                    ),
-                    MessageAction(
-                        label='message',
-                        text='message text'
-                    ),
+                    # PostbackAction(
+                    #     label='postback',
+                    #     display_text='postback text',
+                    #     data='action=buy&itemid=1'
+                    # ),
+                    # MessageAction(
+                    #     label='message',
+                    #     text='message text'
+                    # ),
                     URIAction(
                         label='打卡囉',
-                        uri='http://op.honorseiki.com:8787/External/COVID19/SignIn.aspx/'
+                        uri='http://op.honorseiki.com:8787/External/COVID19/SignIn.aspx?openExternalBrowser=1'
                     )
                 ]
             )
         )
         line_bot_api.reply_message(event.reply_token,buttons_template_message)
-    elif get_message=="滾":
-        reply = TextSendMessage(text=f"你在哭阿")
-        line_bot_api.reply_message(event.reply_token,reply)
-    elif get_message=="走開":
-        reply = TextSendMessage(text=f"http://op.honorseiki.com:8787/External/COVID19/SignIn.aspx/")
-        line_bot_api.reply_message(event.reply_token,reply)
-    else:
-        reply = TextSendMessage(text=f"哩西哩工啥")
-        line_bot_api.reply_message(event.reply_token,reply)
+        
 
     # Send To Line
     # reply = TextSendMessage(text=f"{get_message}")
