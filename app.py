@@ -42,7 +42,7 @@ def callback():
         return "OK"
         
 @app.route("/card", methods=["GET", "POST"])
-def callback():
+def callback2():
     if request.method == "GET":
         try:
             buttons_template_message = TemplateSendMessage(
