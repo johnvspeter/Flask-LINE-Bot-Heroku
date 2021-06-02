@@ -76,6 +76,16 @@ def callback2():
         except InvalidSignatureError:
             abort(400)
         return "傳送打卡訊息"
+    if request.method == "POST":
+        signature = request.headers["X-Line-Signature"]
+        body = request.get_data(as_text=True)
+
+        try:
+            handler.handle(body, signature)
+        except InvalidSignatureError:
+            abort(400)
+
+        return "OK"
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
