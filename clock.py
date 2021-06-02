@@ -1,26 +1,25 @@
-from flask import app
+
+
 from apscheduler.schedulers.blocking import BlockingScheduler
+from datetime import datetime
 import urllib.request
-
-sched = BlockingScheduler()
-
-def job_task(): 
-    url2 = " https://chichunbot.herokuapp.com/card"
-    conn2 = urllib.request.urlopen(url2)
-        
-    for key, value in conn2.getheaders():
-        print(key, value)
-## 利用clock.py call回自己app的url來叫醒app
-@sched.scheduled_job('cron', day_of_week='mon-thu', hour='7,17',minute='15')
-def scheduled_job():
+# 输出时间
+def job():
     url = " https://chichunbot.herokuapp.com/"
     conn = urllib.request.urlopen(url)
         
     for key, value in conn.getheaders():
         print(key, value)
 
+def job2():
+    url2 = " https://chichunbot.herokuapp.com/card"
+    conn2 = urllib.request.urlopen(url2)
+        
+    for key, value in conn2.getheaders():
+        print(key, value)
+# BlockingScheduler
+scheduler = BlockingScheduler()
+scheduler.add_job(job, 'cron', day_of_week='1-5',minute=1)
+scheduler.add_job(job2, 'cron', day_of_week='1-5',minute=1)
 
-sched.add_job(job_task, 'interval', minute='1')
-
-
-sched.start()
+scheduler.start()
