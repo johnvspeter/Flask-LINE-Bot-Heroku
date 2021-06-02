@@ -40,7 +40,8 @@ def callback():
             abort(400)
 
         return "OK"
-        
+
+##打卡訊息
 @app.route("/card", methods=["GET", "POST"])
 def callback2():
     if request.method == "GET":
