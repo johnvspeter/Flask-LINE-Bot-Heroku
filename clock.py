@@ -15,7 +15,7 @@ def scheduled_job():
         print(key, value)
 
 ## 利用clock.py call回自己app的url來叫醒app
-@sched.scheduled_job2('cron', day_of_week='mon-thu',minute='*/1')
+@sched.scheduled_job('cron', day_of_week='mon-thu',minute='*/1')
 def scheduled_job2():
     url2 = " https://chichunbot.herokuapp.com/"
     conn2 = urllib.request.urlopen(url2)
