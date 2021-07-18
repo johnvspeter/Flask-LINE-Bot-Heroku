@@ -14,7 +14,7 @@ def scheduled_job():
         print(key, value)
 
 ## 利用clock.py 每天傳送打卡訊息
-@sched.scheduled_job('cron', day_of_week='mon-thu', hour='7,17',minute='15')
+@sched.scheduled_job('cron', day_of_week='mon-fri', hour='7,17',minute='15')
 def scheduled_job2():
     url = " https://chichunbot.herokuapp.com/card"
     conn = urllib.request.urlopen(url)
