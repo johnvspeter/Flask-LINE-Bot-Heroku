@@ -5,7 +5,7 @@ import urllib.request
 sched = BlockingScheduler()
 
 ## 利用clock.py 每二十分鐘call回自己app的url來叫醒app
-@sched.scheduled_job('cron', day_of_week='mon-thu', minute='*/20')
+@sched.scheduled_job('cron', day_of_week='mon-fri', minute='*/20')
 def scheduled_job():
     url = " https://chichunbot.herokuapp.com/"
     conn = urllib.request.urlopen(url)
