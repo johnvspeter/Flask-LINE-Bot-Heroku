@@ -29,7 +29,7 @@ def callback():
 ## app一被call到get就發送打卡訊息
     if request.method == "GET":
         
-        return "修改push"
+        return "增加星期五"
     if request.method == "POST":
         signature = request.headers["X-Line-Signature"]
         body = request.get_data(as_text=True)
@@ -41,7 +41,7 @@ def callback():
 
         return "OK"
 
-##打卡訊息
+## app一被call到get就發送打卡訊息
 @app.route("/card", methods=["GET", "POST"])
 def callback2():
     if request.method == "GET":
